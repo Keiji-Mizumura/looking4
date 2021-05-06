@@ -10,7 +10,7 @@ export default function Button(props){
 
 export function ButtonLight(props){
     return(
-        <Button className={classes.btn_light}>
+        <Button className={classes.btn_light} onClick={props.onClick}>
             {props.children}
         </Button>
     )

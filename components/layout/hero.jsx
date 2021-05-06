@@ -4,23 +4,23 @@ import Container from "../containers/container";
 
 import { useState, useEffect } from "react";
 
+import { useRouter } from "next/router";
+
 export default function Hero() {
 
   const [imageStyle, setImageStyle] = useState({});
 
+  const router = useRouter();
+
   useEffect(()=>{
     setImageStyle({
       backgroundImage: "url(/images/slides/cover.jpg",
-      animationName: "fadeOut",
-      animationDuration: "500ms"
     })
   },[]);
 
   setInterval(function(){
     setImageStyle({
       backgroundImage: "url(/images/slides/cover2.jpg",
-      animationName: "fadeOut",
-      animationDuration: "500ms"
     })
   }, 5000);
 
@@ -38,7 +38,7 @@ export default function Hero() {
           </h2>
           <div className={classes.buttons}>
             <Button>Look4 Freelancers</Button>
-            <ButtonLight>Become a Freelancer</ButtonLight>
+            <ButtonLight onClick={() => router.push("/signup")}>Become a Freelancer</ButtonLight>
           </div>
         </div>
       </Container>

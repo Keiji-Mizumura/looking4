@@ -66,14 +66,3 @@
     font-weight: 700;
     color: #fff;
 }
-
-/* Animation */
-
-@keyframes fadeOut{
-    0%{
-        opacity: 0,
-    }
-    100%{
-        opacity: 1
-    }
-}
