@@ -1,0 +1,15 @@
+.header{
+    height: 70px;
+    background-color: #ffffff;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+}
+
+.header > div{
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

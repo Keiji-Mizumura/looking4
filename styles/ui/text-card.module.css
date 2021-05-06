@@ -1,0 +1,26 @@
+.card{
+    padding: 10px;
+}
+
+.heading{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}  
+.heading h1{
+    margin-left: 20px;
+    font-size: 1.5em;
+}
+
+.heading .icon{
+    font-size: 2em;
+    height: 2.5em;
+    color: var(--main-color);
+}
+
+.items{
+    font-family: 'Lato', sans-serif;
+    margin-top: 20px;
+    line-height: 1.5;
+    font-size: 1.1em;
+}

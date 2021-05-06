@@ -1,0 +1,23 @@
+.navigation{
+    display: flex;
+    align-items: center;
+}
+
+.navigation ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation ul li{
+    padding: 15px 0;
+}
+
+.navigation ul li a{
+    padding: 15px 30px;
+}
+
+.navigation ul li a:hover{
+    text-decoration: underline;
+}

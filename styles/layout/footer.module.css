@@ -1,0 +1,33 @@
+.footer{
+    font-family: 'Lato', sans-serif; 
+    color: #fff;
+    background-color: var(--main-color-dark);
+}
+
+.main{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main h2{
+    font-size: 1.2em;
+}
+
+.main ul{
+    list-style-type: none;
+    color: #ccc;
+}
+.main ul li{
+    padding: 3px 0px;
+}
+
+.sub{
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    font-size: .8em;
+    color: #bbb;
+    border-top: 1px solid var(--main-color);
+}
