@@ -21,3 +21,8 @@
 .navigation ul li a:hover{
     text-decoration: underline;
 }
+
+.navigation button svg{
+    font-size: 15px;
+    height: 15px;
+}

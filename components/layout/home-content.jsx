@@ -8,7 +8,7 @@ export default function HomeContent(){
     return(
         <div className={classes.content}>
             <Container>
-                <h1 className={classes.title}>Awesome Features</h1>
+                <h1 className={classes.title}>Awesome Features to Look4</h1>
                 <GridContainer>
                     <TextCard
                         icon={faSearch}
