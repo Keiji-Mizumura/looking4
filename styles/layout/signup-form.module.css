@@ -32,7 +32,7 @@
     width: 80%;
 }
 
-.form input[type="text"]{
+.form input[type="email"]{
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;

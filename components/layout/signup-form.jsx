@@ -1,6 +1,7 @@
 import classes from "../../styles/layout/signup-form.module.css";
 import Button from "../ui/button";
 import Logo from "../ui/logo";
+import ErrorMessage from "../ui/error-message";
 
 import { useRef, useState } from "react";
 import Link from "next/link";
@@ -29,26 +30,25 @@ export default function SignupForm() {
       setError('');
       setLoading(true);
       await signup(email, password);
+      router.push("/login");
     } catch {
-      setError('Failed to create an account');
+      setError('Invalid Email or Password');
     }
     setLoading(false);
-    router.push("/login");
-
   }
 
   return (
     <div className={classes.signup}>
+      {error && <ErrorMessage><p>{error}</p></ErrorMessage>}
       <Logo className={classes.logo} />
       <h2>Sign Up</h2>
-      {error && <h1>temp error message: {error}</h1>}
       <img
         className={classes.google}
         src="\images\google_signin_buttons\web\2x\btn_google_signin_light_normal_web@2x.png"
       />
       <p className={classes.or}>or</p>
       <form className={classes.form} onSubmit={handleSubmit}>
-        <input type="text" placeholder="Email" ref={emailRef} required/>
+        <input type="email" placeholder="Email" ref={emailRef} required/>
         <input type="password" placeholder="Password" ref={passwordRef} required/>
         <div className={classes.checkbox}>
             <input type="checkbox" required/>
