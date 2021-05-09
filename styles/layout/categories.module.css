@@ -1,0 +1,16 @@
+.categories{
+    margin-top: 75px;
+}
+
+.categories button{
+    transform: scale(1.5);
+}
+
+
+.categories button::before{
+    color: var(--main-color-dark);
+}
+
+.title{
+    padding: 10px 0;
+}

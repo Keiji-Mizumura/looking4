@@ -2,6 +2,9 @@ import Heading from "../../components/meta/heading";
 import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
 
+import Container from "../../components/containers/container";
+import Categories from "../../components/layout/categories";
+
 export default function BrowsePage() {
   return (
     <div>
@@ -10,7 +13,8 @@ export default function BrowsePage() {
         <Heading />
         {/* Style Data */}
         <Header />
-
+        {/* <FreelanceSearch /> */}
+        
         {/* Footer */}
         <Footer />
       </div>
