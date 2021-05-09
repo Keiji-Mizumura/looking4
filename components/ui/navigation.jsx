@@ -14,10 +14,10 @@ export default function Navigation(){
         <nav className={classes.navigation}>
             <ul>
                 <li>
-                    <Link href="/"><a>About</a></Link>
+                    <Link href="/about"><a>About</a></Link>
                 </li>
                 <li>
-                    <Link href="/"><a>Browse Freelancers</a></Link>
+                    <Link href="/browse"><a>Browse Freelancers</a></Link>
                 </li>
                 <li>
                     <Link href="/login"><a>Login</a></Link>
