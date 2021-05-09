@@ -28,7 +28,7 @@ export default function Hero() {
               Search for talents that can turn your ideas into reality.
             </h2>
             <div className={classes.buttons}>
-              <Button>Look4 Freelancers</Button>
+              <Button onClick={() => router.push("/browse")}>Look4 Freelancers</Button>
               <ButtonLight onClick={() => router.push("/signup")}>Become a Freelancer</ButtonLight>
             </div>
           </div>

@@ -6,7 +6,7 @@ export default function MultipleItems(props){
         infinite: true,
         speed: 500,
         slidesToShow: props.slides,
-        slidesToScroll: 1
+        slidesToScroll: props.slides
     }
     return(
         <Slider {...settings}>

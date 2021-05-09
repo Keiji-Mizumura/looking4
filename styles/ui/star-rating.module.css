@@ -1,0 +1,12 @@
+.star{
+    font-size: .8em;
+}
+
+.star svg{
+    height: 15px;
+    width: 15px;
+}
+
+.not_active{
+    color: #111;
+}

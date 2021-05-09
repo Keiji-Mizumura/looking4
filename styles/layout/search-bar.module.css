@@ -1,0 +1,43 @@
+.searchbar{
+    background-color: var(--main-color-dark);
+    margin-top: 75px;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.form input[type="text"]{
+    color: #fff;
+    font-size: 1.3em;
+    padding: 5px 10px;
+    width: 100%;
+    margin: 5px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background-color: var(--main-color);
+}
+
+.form input::placeholder{
+    color: #fff;
+}
+
+.form select{
+    width: 50%;
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.form button{
+    width: 50%;
+    margin: 5px;
+    border-radius: 5px;
+}
