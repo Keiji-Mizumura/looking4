@@ -1,0 +1,56 @@
+.profile{
+    margin-top: 75px;
+}
+
+.cover{
+    background: linear-gradient(0deg, var(--main-color), var(--main-color-dark));
+    height: 300px;
+    position: relative;
+}
+
+.cover img{
+    position: absolute;
+    height: 200px;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%,50%);
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.cover h1{
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 4em;
+    padding-top: 50px;
+}
+
+.profile_name{
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+    padding: 20px;
+    color: var(--main-color-dark);
+}
+
+.profile_name h1{
+    font-size: 3em;
+}
+
+.freelance_profile{
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 2px 0;
+}
+
+.introduction{
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 30px;
+    margin: 10px 0;
+    color: var(--main-color);
+}

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../backend/firebase";
+import firebase, { auth } from "../backend/firebase";
 
 const AuthContext = React.createContext();
 
@@ -23,6 +23,37 @@ export function AuthProvider({ children }) {
     return auth.signOut();
   }
 
+  function writeUserData(user){
+    return firebase.database().ref('users/' + user.uid)
+            .set(user);
+  }
+
+  function hasUser(uid){
+    var exists = false;
+    firebase.database().ref('users').on('value', (snapshot) => {
+      const users = snapshot.val();
+      for(let id in users){
+        if(id == uid){
+          exists = true;
+        }
+      }
+    });
+    return exists;
+  }
+
+  function getUser(uid){
+    var user = {};
+    firebase.database().ref('users').on('value', (snapshot) => {
+      const users = snapshot.val();
+      for(let id in users){
+        if(id == uid){
+          user = users[uid];
+        }
+      }
+    });
+    return user;
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -36,6 +67,9 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    writeUserData,
+    hasUser,
+    getUser
   };
 
   return (

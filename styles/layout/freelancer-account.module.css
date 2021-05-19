@@ -14,7 +14,7 @@
 
 .heading h1{
     font-size: 3em;
-    text-align: right;
+    text-align: left;
     color: var(--main-color-dark)
 }
 

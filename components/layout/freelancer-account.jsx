@@ -1,4 +1,4 @@
-import classes from "../../styles/layout/client-account.module.css";
+import classes from "../../styles/layout/freelancer-account.module.css";
 import Container from "../containers/container";
 import Button from "../ui/button";
 
@@ -13,7 +13,9 @@ import { useRouter } from "next/router";
 
 import firebase from "../backend/firebase";
 
-export default function ClientAccount() {
+import { categories } from "../data/categories";
+
+export default function FreelancerAccount() {
   const router = useRouter();
 
   const [error, setError] = useState("");
@@ -26,6 +28,11 @@ export default function ClientAccount() {
   const lnameRef = useRef();
   const genderRef = useRef();
   const birthdayRef = useRef();
+  const categoryRef = useRef();
+  const specialtyRef = useRef();
+  const introductionRef = useRef();
+  const websiteRef = useRef();
+  const experienceRef = useRef();
 
   const { writeUserData, currentUser } = useAuth();
 
@@ -45,13 +52,19 @@ export default function ClientAccount() {
     const user = {
       uid: currentUser.uid,
       email: currentUser.email,
-      freelancer: false,
+      freelancer: true,
       username: usernameRef.current.value,
       first_name: fnameRef.current.value,
       last_name: lnameRef.current.value,
       profile_picture: profileImage,
       gender: genderRef.current.value,
       birthday: birthdayRef.current.value,
+      category: categoryRef.current.value,
+      specialty: specialtyRef.current.value,
+      introduction: introductionRef.current.value,
+      website: websiteRef.current.value,
+      experience: experienceRef.current.value,
+      gigs: []
     };
     try {
       await writeUserData(user);
@@ -65,8 +78,8 @@ export default function ClientAccount() {
     <div className={classes.client}>
       <Container>
         <div className={classes.heading}>
-          <img src="/images/svgs/client-information.svg" />
-          <h1>Just a few more steps to become a client</h1>
+          <h1>Becoming a freelancer hasn't been this easy.</h1>
+          <img src="/images/svgs/freelancing.svg" />
         </div>
         <form className={classes.form} onSubmit={handleAccount}>
           {error && (
@@ -123,17 +136,54 @@ export default function ClientAccount() {
             </div>
           </div>
 
+          <h2>Additional Information</h2>
+
+          <div className={classes.row}>
+            <div className={classes.col}>
+              <label htmlFor="category">Category:</label>
+              <select name="category" id="category" ref={categoryRef}>
+                {categories.map((i) => (
+                  <option value={i}>{i}</option>
+                ))}
+              </select>
+            </div>
+            <div className={classes.col}>
+              <label htmlFor="profession">Specialty:</label>
+              <input type="text" placeholder="e.g. Graphic Designing" ref={specialtyRef} required/>
+            </div>
+          </div>
+
+          <label htmlFor="introduction">Self Introduction:</label>
+          <input type="text" placeholder="Hello, I'm a ..." ref={introductionRef} required/>
+
+          <label htmlFor="website">Website or Social Media Links</label>
+          <input type="text" placeholder="www.example.org" ref={websiteRef} required/>
+
+          <label htmlFor="experience">Experience in the field.</label>
+          <select name="experience" id="experience" ref={experienceRef}>
+              <option value="0">Less than a year</option>
+              <option value="1">1-5 years</option>
+              <option value="2">5 years and beyond</option>
+          </select>
+
           <div className={classes.row}>
             <div className={classes.check}>
               <input type="checkbox" />
               <label htmlFor="checkbox" required>
-                I Agree that all of the information above is correct and
-                accurate.
+                I Agree that all information above is correct and accurate.
+              </label>
+            </div>
+          </div>
+          <div className={classes.row}>
+            <div className={classes.check}>
+              <input type="checkbox" />
+              <label htmlFor="checkbox" required>
+              I have read and agree to the Terms and Conditions of Looking4.
               </label>
             </div>
           </div>
 
-          <Button>Complete Registration</Button>
+          <Button>Start Freelancing</Button>
         </form>
       </Container>
     </div>

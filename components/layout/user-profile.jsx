@@ -32,7 +32,7 @@ export default function UserProfile() {
                 <img src="/images/svgs/freelancer.svg" />
                 <h2>I'm a freelancer</h2>
                 <p>I want to promote my skills and earn money.</p>
-                <Button>Continue as Freelancer</Button>
+                <Button onClick={() => router.push("/profile/account-freelancer")}>Continue as Freelancer</Button>
               </div>
             </div>
           </>
