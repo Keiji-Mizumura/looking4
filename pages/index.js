@@ -6,6 +6,8 @@ import HomeContent from "../components/layout/home-content";
 import Categories from "../components/layout/categories";
 import HomeFeedback from "../components/layout/home-feedback";
 
+// CREATED BY LOOKING4 TEAM
+
 export default function Home() {
   return (
     <div>
