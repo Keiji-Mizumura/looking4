@@ -20,7 +20,7 @@ export default function SignupForm() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const { signup } = useAuth();
+  const { signup, login } = useAuth();
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -30,7 +30,8 @@ export default function SignupForm() {
       setError('');
       setLoading(true);
       await signup(email, password);
-      router.push("/login");
+      await login(email, password);
+      router.push("/profile");
     } catch {
       setError('Invalid Email or Password');
     }

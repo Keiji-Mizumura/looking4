@@ -17,9 +17,6 @@ export default function UserProfile() {
       <Container>
         {currentUser ? (
           <>
-            <WarningMessage>
-              <p>Your account is not yet verified.</p>
-            </WarningMessage>
             <h1>Choose your account type.</h1>
             <div className={classes.options}>
               <div className={classes.client}>

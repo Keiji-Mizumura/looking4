@@ -41,6 +41,19 @@ export function AuthProvider({ children }) {
     return exists;
   }
 
+  function isVerified(uid){
+    let verified = false;
+    firebase.database().ref('users').on('value', (snapshot) => {
+      const users = snapshot.val();
+      for(let id in users){
+        if(id == uid){
+          verified = users[uid].verified;
+        }
+      }
+    });
+    return verified;
+  }
+
   function getUser(uid){
     var user = {};
     firebase.database().ref('users').on('value', (snapshot) => {
@@ -69,7 +82,8 @@ export function AuthProvider({ children }) {
     logout,
     writeUserData,
     hasUser,
-    getUser
+    getUser,
+    isVerified
   };
 
   return (

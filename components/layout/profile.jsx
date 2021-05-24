@@ -9,9 +9,6 @@ export default function Profile(props){
     return(
         <div className={classes.profile}>
             <Container>
-                <WarningMessage>
-                    <p>Your account is not yet verified.</p>
-                </WarningMessage>
                 <div className={classes.cover}>
                     {
                         user.freelancer ?

@@ -2,18 +2,24 @@ import Heading from "../../components/meta/heading";
 import Header from "../../components/layout/header";
 import Footer from "../../components/layout/footer";
 import UserProfile from "../../components/layout/user-profile";
+import VerificationNotification from "../../components/layout/verification-notification";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../components/context/auth-context";
 import { useRouter } from "next/router";
 
+import firebase from "../../components/backend/firebase";
+
 export default function ProfilePage(){
 
-    const { hasUser, currentUser } = useAuth();
+    const { hasUser, currentUser, writeUserData, isVerified } = useAuth();
     const router = useRouter();
 
+    const [verified, setVerified] = useState(false);
+
     useEffect(()=>{
-        console.log(hasUser(currentUser.uid));
+        var user = firebase.auth().currentUser;
+        setVerified(user.emailVerified);
         if(hasUser(currentUser.uid)){
             router.push("/profile/" + currentUser.uid);
         }
@@ -23,7 +29,10 @@ export default function ProfilePage(){
         <div>
             <Heading title=" - Profile" />
             <Header />
-            <UserProfile />
+            {verified ? 
+                <UserProfile /> :
+                <VerificationNotification />
+            }
             <Footer />
         </div>
     )
