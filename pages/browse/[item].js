@@ -17,6 +17,11 @@ export default function ItemPage() {
 
   const [gigItem, setGigItem] = useState({});
 
+  function bookHandler(e){
+    e.preventDefault();
+    alert("Item added to cart");
+  }
+
   useEffect(() => {
     const gigRef = firebase.database().ref("gig");
     gigRef.on("value", (snapshot) => {
@@ -25,6 +30,7 @@ export default function ItemPage() {
         setGigItem({
             title: gig[item].title,
             image: gig[item].image,
+            
         });
         
       
@@ -44,9 +50,11 @@ export default function ItemPage() {
           <br /> <br />
           <h1>{gigItem.title}</h1>
           <img src={gigItem.image} style={{width: "100%"}}/>
-          <form>
-              <textarea /> <br />
-              <Button>Message Freelancer</Button>
+          <br />
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet autem aut repellat, minus ratione optio corporis quis magni dolore velit!</p>
+          <br />
+          <form onSubmit={bookHandler}>
+              <Button>Book Item</Button>
           </form>
       </Container>
 
