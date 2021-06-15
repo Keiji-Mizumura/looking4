@@ -9,89 +9,44 @@ import GridContainer from "../../components/containers/grid-container";
 
 import FreelanceCard from "../../components/ui/freelance-card";
 
+import { useEffect, useState } from "react";
+import firebase from "../../components/backend/firebase";
+
 export default function BrowsePage() {
-  const freelances = [
-    {
-      cover:
-        "https://images.pexels.com/photos/34140/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      title: "Web UX Design",
-      username: "John Proctor",
-      userstats: "This is stats",
-      url:
-        "https://images.pexels.com/users/avatars/1585619/cleyder-quiroz-832.jpeg?auto=compress&fit=crop&h=256&w=256",
-      rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    },
-    {
-        cover:
-          "https://images.pexels.com/photos/4483109/pexels-photo-4483109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        title: "Painting Job on the Go",
-        username: "Anna Shvelts",
-        userstats: "This is stats",
-        url:
-          "https://images.pexels.com/users/avatars/1984515/anna-shvets-288.jpeg?auto=compress&fit=crop&h=256&w=256",
-        rating: 3.5,
-    }
-  ];
+
+  const [freelances, setFreelances] = useState([]);
+
+  useEffect(()=>{
+    const gigRef = firebase.database().ref('gig');
+    gigRef.on('value', (snapshot) => {
+      const gig = snapshot.val();
+      const gigList = [];
+      for (let id in gig) {
+        const userRef = firebase.database().ref('users');
+        let username = "";
+        let avatar = "";
+        userRef.on('value', (snapshot) => {
+          const user = snapshot.val();
+          for(let userId in user){
+            if(user[userId].uid == gig[id].user){
+              username = user[userId].username;
+              avatar = user[userId].profile_picture;
+            }
+          } 
+        });
+        gigList.push({
+          uid: id,
+          cover: gig[id].image,
+          title: gig[id].title,
+          username: username,
+          url: avatar,
+          rating: 0,
+        });
+      }
+      setFreelances(gigList);
+    });
+  },[]);
+
 
   return (
     <div>
@@ -114,6 +69,7 @@ export default function BrowsePage() {
                 userstats={item.userstats}
                 url={item.url}
                 rating={item.rating}
+                link={`/browse/${item.uid}`}
               />
             ))}
           </GridContainer>

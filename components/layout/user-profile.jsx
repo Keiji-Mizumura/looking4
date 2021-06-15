@@ -6,6 +6,7 @@ import WarningMessage from "../ui/warning-message";
 
 import { useAuth } from "../context/auth-context";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function UserProfile() {
   const { currentUser } = useAuth();

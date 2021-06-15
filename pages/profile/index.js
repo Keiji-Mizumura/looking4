@@ -20,9 +20,10 @@ export default function ProfilePage(){
     useEffect(()=>{
         var user = firebase.auth().currentUser;
         setVerified(user.emailVerified);
-        if(hasUser(currentUser.uid)){
-            router.push("/profile/" + currentUser.uid);
+        if(hasUser(user.uid)){
+            router.push("/profile/" + user.uid);
         }
+
     },[]);
 
     return(

@@ -1,10 +1,13 @@
 import StartRating from "./star-rating";
 
 import classes from "../../styles/ui/freelance-card.module.css";
+import Link from "next/link";
 
 export default function FreelanceCard(props) {
   return (
     <div className={classes.card}>
+      <Link href={props.link}>
+      <a>
       <img src={props.cover} className={classes.image} />
       <div className={classes.overlay}></div>
       <div className={classes.content}>
@@ -21,9 +24,10 @@ export default function FreelanceCard(props) {
             <StartRating rating={props.rating}/> 
             <p>{props.rating}/5.0</p>
           </div>
-          
         </div>
       </div>
+      </a>
+      </Link>
     </div>
   );
 }
