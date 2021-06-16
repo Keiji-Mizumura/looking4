@@ -1,7 +1,7 @@
 import Button from "../ui/button";
 import classes from "../../styles/ui/navigation.module.css";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/auth-context";
 
@@ -14,6 +14,10 @@ export default function Navigation() {
   const [error, setError] = useState("");
 
   const router = useRouter();
+
+  useEffect(() => {
+    
+  }, []);
 
   async function handleLogout() {
     const test = confirm("Are you sure you want to logout?");
